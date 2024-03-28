@@ -2,12 +2,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: guestbook1
+  name: guestbook
   namespace: flux-system
 spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/riadelhajjaji-2001/flux-without-cni.git
+  url: https://github.com/riadelhajjaji-2001/k3s-flux.git
  #secretRef:
   #  name: flux-system
