@@ -10,4 +10,4 @@ spec:
     branch: main
   url: https://github.com/riadelhajjaji-2001/k3s-flux.git
   secretRef:
-    name: bearer-token-auth
+    name: flux-system
