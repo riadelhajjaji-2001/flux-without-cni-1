@@ -4,7 +4,9 @@ namespace: default
 resources:
   - repository.yaml
   - release.yaml
-  - ./guestbook
+  - guestbook/fluxwgitreposecret.yaml
+  - guestbook/gitrepo.yaml
+  - guestbook/guestbook-kustomization
 #patches:
  # - path: values.yaml
  #   target:
