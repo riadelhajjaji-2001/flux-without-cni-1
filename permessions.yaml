@@ -1,24 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: flux-all-permissions
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["*"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRoleBinding
 metadata:
-  name: flux-permissions
-rules:
-- apiGroups: ["", "extensions", "apps"]
-  resources: ["deployments", "replicasets", "pods", "namespaces"]
-  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: flux-permissions
-  namespace: flux-system
+  name: flux-all-permissions
 subjects:
 - kind: ServiceAccount
   name: kustomize-controller
-  apiGroup: ""
+  namespace: flux-system
 roleRef:
- kind: Role
- name: flux-permissions
- apiGroup: ""
+  kind: ClusterRole
+  name: flux-all-permissions
+  apiGroup: rbac.authorization.k8s.io
