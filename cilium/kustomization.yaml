@@ -5,8 +5,8 @@ resources:
   - repository.yaml
   - release.yaml
   #- ../guestbook/fluxwgitreposecret.yaml
-  - ../guestbook/gitrepo.yaml
-  - ../guestbook/guestbook-kustomization.yaml
+  - gitrepo.yaml
+  - guestbook-kustomization.yaml
 #patches:
  # - path: values.yaml
  #   target:
