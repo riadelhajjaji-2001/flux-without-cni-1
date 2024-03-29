@@ -1,24 +1,25 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: flux-permissions
-  namespace: flux-system
+  name: flux-controller-permissions
 rules:
 - apiGroups: [""]
   resources: ["namespaces"]
   verbs: ["patch"]
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterroles"]
+  verbs: ["patch"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: flux-permissions-binding
-  namespace: flux-system
+  name: flux-controller-permissions-binding
 subjects:
 - kind: ServiceAccount
   name: kustomize-controller
   namespace: flux-system
 roleRef:
-  kind: Role
-  name: flux-permissions
+  kind: ClusterRole
+  name: flux-controller-permissions
   apiGroup: rbac.authorization.k8s.io
